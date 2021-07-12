@@ -18,7 +18,14 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
     CoreModule,
     AppRoutingModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(
+      {},
+      {
+        runtimeChecks: {
+          strictStateImmutability: false,
+        },
+      },
+    ),
     EffectsModule.forRoot(),
     ApiCallerModule,
     StoreDevtoolsModule.instrument({
