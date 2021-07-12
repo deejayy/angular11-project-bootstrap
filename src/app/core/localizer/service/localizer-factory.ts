@@ -6,12 +6,13 @@ import { LocalizerService } from './localizer.service';
 export const getLocaleFromLocalStorage = () => {
   try {
     const language = window.localStorage.getItem('localeId');
-    if (availableLanguages.includes(language)) {
+    if (availableLanguages.includes(language as string)) {
       return language;
     }
   } catch {
-    return;
+    console.warn('Failed to get language setting from localStorage');
   }
+  return;
 };
 
 export const localizerFactory = (localizerService: LocalizerService, locale: string) => {
